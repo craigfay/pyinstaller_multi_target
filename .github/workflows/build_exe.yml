@@ -24,6 +24,7 @@ jobs:
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+          pip install pyinstaller
           pyinstaller --name example_ubuntu_18_04 -F example.py
           ls
           ./dist/example
@@ -41,6 +42,7 @@ jobs:
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+          pip install pyinstaller
           pyinstaller --name example_macos_11 -F example.py
           ls
           ./dist/example
