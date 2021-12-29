@@ -38,7 +38,7 @@ jobs:
           git add dist/*
           git commit -m "compile ubuntu exe in pipeline"
           git fetch origin master
-          git merge -s recursive -X theirs origin/master
+          git merge -s recursive -X theirs -m "merge exe builds" origin/master
           git push
 
 
@@ -69,7 +69,7 @@ jobs:
           git add dist/*
           git commit -m "compile macos exe in pipeline"
           git fetch origin master
-          git merge -s recursive -X theirs origin/master
+          git merge -s recursive -X theirs -m "merge exe builds" origin/master
           git push
 
   build_windows:
@@ -95,6 +95,6 @@ jobs:
           git add dist/*
           git commit -m "compile windows exe in pipeline"
           git fetch origin master
-          git merge -s recursive -X theirs origin/master
+          git merge -s recursive -X theirs -m "merge exe builds" origin/master
           git push
 
