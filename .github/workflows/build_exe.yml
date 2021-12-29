@@ -27,7 +27,7 @@ jobs:
           pip install pyinstaller
           pyinstaller --name example_ubuntu_18_04 -F example.py
           ls
-          ./dist/example
+          ./dist/example_ubuntu_18_04
 
   build_macos:
     runs-on: macos-11
@@ -45,7 +45,7 @@ jobs:
           pip install pyinstaller
           pyinstaller --name example_macos_11 -F example.py
           ls
-          ./dist/example
+          ./dist/example_macos_11
 
 
 
@@ -62,6 +62,6 @@ jobs:
           pip install pyinstaller
           pyinstaller --name example_windows_server_2022 -F example.py
           ls
-          ./dist/example
+          ./dist/example_windows_server_2022
 
 
