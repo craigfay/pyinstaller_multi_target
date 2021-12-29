@@ -31,13 +31,14 @@ jobs:
           ls
           ./dist/example_ubuntu_18_04
 
-      - name: Upload Build Artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: 'dist/*'
-
+      - name: Push Built Exe
+        run: |
+          git config --global user.name 'craigfay'
+          git config --global user.email 'craigfay@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add dist/*
+          git commit -m "compile ubuntu exe in pipeline"
+          git push
 
 
   build_macos:
@@ -60,12 +61,14 @@ jobs:
           ls
           ./dist/example_macos_11
 
-      - name: Upload Build Artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: 'dist/*'
+      - name: Push Built Exe
+        run: |
+          git config --global user.name 'craigfay'
+          git config --global user.email 'craigfay@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add dist/*
+          git commit -m "compile macos exe in pipeline"
+          git push
 
   build_windows:
     runs-on: windows-2022
@@ -83,10 +86,12 @@ jobs:
           ls
           ./dist/example_windows_server_2022
 
-      - name: Upload Build Artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: 'dist/*'
+      - name: Push Built Exe
+        run: |
+          git config --global user.name 'craigfay'
+          git config --global user.email 'craigfay@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add dist/*
+          git commit -m "compile windows exe in pipeline"
+          git push
 
