@@ -35,4 +35,11 @@ jobs:
         run: |
           pyinstaller -F example.py
 
+      - name: Run Exe
+        run: |
+          ls
+          ./dist/example
+
+
+
 
