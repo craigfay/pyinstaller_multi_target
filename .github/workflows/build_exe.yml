@@ -37,7 +37,8 @@ jobs:
           git config --global user.email 'craigfay@users.noreply.github.com'
           git add dist/*
           git commit -m "compile ubuntu exe in pipeline"
-          git pull
+          git fetch origin master
+          git merge -s recursive -X theirs origin/master
           git push
 
 
@@ -67,7 +68,8 @@ jobs:
           git config --global user.email 'craigfay@users.noreply.github.com'
           git add dist/*
           git commit -m "compile macos exe in pipeline"
-          git pull
+          git fetch origin master
+          git merge -s recursive -X theirs origin/master
           git push
 
   build_windows:
@@ -92,6 +94,7 @@ jobs:
           git config --global user.email 'craigfay@users.noreply.github.com'
           git add dist/*
           git commit -m "compile windows exe in pipeline"
-          git pull
+          git fetch origin master
+          git merge -s recursive -X theirs origin/master
           git push
 
