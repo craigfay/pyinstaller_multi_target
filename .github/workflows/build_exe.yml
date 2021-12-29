@@ -31,6 +31,9 @@ jobs:
           eval "$(pyenv virtualenv-init -)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
 
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
       - name: Build Exe
         run: |
           pyinstaller -F example.py
@@ -59,6 +62,9 @@ jobs:
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
 
       - name: Build Exe
         run: |
