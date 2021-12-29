@@ -40,6 +40,35 @@ jobs:
           ls
           ./dist/example
 
+  build_windows:
+    # The type of runner that the job will run on
+    runs-on: windows-2022
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Pyenv
+        run: |
+          curl https://pyenv.run | bash
+          echo $SHELL
+
+      - name: Install Python
+        run: |
+          export PATH="$HOME/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+          env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+
+      - name: Build Exe
+        run: |
+          pyinstaller -F example.py
+
+      - name: Run Exe
+        run: |
+          ls
+          ./dist/example
+
 
 
 
