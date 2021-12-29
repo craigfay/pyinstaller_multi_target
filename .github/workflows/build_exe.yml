@@ -33,8 +33,8 @@ jobs:
 
       - name: Push Built Exe
         run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name '${GITHUB_ACTOR}'
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git add dist/*
           git commit -m "compile ubuntu exe in pipeline"
           git fetch origin master
@@ -64,8 +64,8 @@ jobs:
 
       - name: Push Built Exe
         run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name '${GITHUB_ACTOR}'
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git add dist/*
           git commit -m "compile macos exe in pipeline"
           git fetch origin master
@@ -90,8 +90,8 @@ jobs:
 
       - name: Push Built Exe
         run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name '${GITHUB_ACTOR}'
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git add dist/*
           git commit -m "compile windows exe in pipeline"
           git fetch origin master
