@@ -22,10 +22,11 @@ jobs:
       - name: Install Pyenv
         run: |
           curl https://pyenv.run | bash
+
+      - name: Install Python
+        run: |
           export PATH="$HOME/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
-
-      - name: Install Python
-        run: env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+          env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
 
