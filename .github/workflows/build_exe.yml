@@ -32,11 +32,9 @@ jobs:
           ./dist/example_ubuntu_18_04
 
       - name: Push Built Exe
-        env:
-          ACTOR: $GITHUB_ACTOR
         run: |
-          git config --global user.name "$ACTOR"
-          git config --global user.email "$ACTOR@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add dist/*
           git commit -m "compile ubuntu exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
@@ -65,11 +63,9 @@ jobs:
           ./dist/example_macos_11
 
       - name: Push Built Exe
-        env:
-          ACTOR: $GITHUB_ACTOR
         run: |
-          git config --global user.name "$ACTOR"
-          git config --global user.email "$ACTOR@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add dist/*
           git commit -m "compile macos exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
@@ -93,24 +89,9 @@ jobs:
           ./dist/example_windows_server_2022
 
       - name: Push Built Exe
-        env:
-          ACTOR: $GITHUB_ACTOR
         run: |
-          echo $GITHUB_ACTOR
-          echo '1 $GITHUB_ACTOR'
-          echo "2 $GITHUB_ACTOR"
-          echo '3 ${GITHUB_ACTOR}'
-          echo "4 ${GITHUB_ACTOR}"
-          echo '5 $(echo $GITHUB_ACTOR)}'
-          echo "6 $(echo $GITHUB_ACTOR)}"
-          echo '7 $(echo "$GITHUB_ACTOR")}'
-          echo "8 $(echo '$GITHUB_ACTOR')}"
-          echo "9 ${{ env.GITHUB_ACTOR }}"
-          echo '10 ${{ env.GITHUB_ACTOR }}'
-          echo '13 ${{ github.actor }}'
-          echo "14 ${{ github.actor }}"
-          git config --global user.name "$ACTOR"
-          git config --global user.email "$ACTOR@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add dist/*
           git commit -m "compile windows exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
