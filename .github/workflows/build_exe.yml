@@ -18,14 +18,12 @@ jobs:
 
       - name: Install and Build
         run: |
-          echo $SHELL
           curl https://pyenv.run | bash
           export PATH="$HOME/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
           eval "$(pyenv init --path)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
-          echo python --version
           pip install pyinstaller
           pyinstaller --name example_ubuntu_18_04 -F example.py
           ls
@@ -49,14 +47,12 @@ jobs:
 
       - name: Install and Build
         run: |
-          echo $SHELL
           brew install pyenv
           export PATH="$HOME/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
           eval "$(pyenv init --path)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
-          echo python --version
           pip install pyinstaller
           pyinstaller --name example_macos_11 -F example.py
           ls
@@ -79,10 +75,8 @@ jobs:
 
       - name: Install and Build
         run: |
-          echo $SHELL
           choco install pyenv-win
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
-          echo python --version
           pip install pyinstaller
           pyinstaller --name example_windows_server_2022 -F example.py
           ls
