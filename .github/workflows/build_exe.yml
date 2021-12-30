@@ -107,7 +107,6 @@ jobs:
           echo "8 $(echo '$GITHUB_ACTOR')}"
           echo "9 ${{ env.GITHUB_ACTOR }}"
           echo '10 ${{ env.GITHUB_ACTOR }}'
-          echo '11 ${{ GITHUB_ACTOR }}'
           echo '12 ${{ $GITHUB_ACTOR }}'
           echo '13 ${{ github.actor }}'
           echo "14 ${{ github.actor }}"
