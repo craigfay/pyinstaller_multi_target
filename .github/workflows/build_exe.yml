@@ -101,6 +101,12 @@ jobs:
           echo "2 $GITHUB_ACTOR"
           echo '3 ${GITHUB_ACTOR}'
           echo "4 ${GITHUB_ACTOR}"
+          echo '5 $(echo $GITHUB_ACTOR)}'
+          echo "6 $(echo $GITHUB_ACTOR)}"
+          echo '7 $(echo "$GITHUB_ACTOR")}'
+          echo "8 $(echo '$GITHUB_ACTOR')}"
+          echo "9 ${{ env.GITHUB_ACTOR }}"
+          echo '10 ${{ env.GITHUB_ACTOR }}'
           git config --global user.name "$ACTOR"
           git config --global user.email "$ACTOR@users.noreply.github.com"
           git add dist/*
