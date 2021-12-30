@@ -32,9 +32,11 @@ jobs:
           ./dist/example_ubuntu_18_04
 
       - name: Push Built Exe
+        env:
+          ACTOR: $GITHUB_ACTOR
         run: |
-          git config --global user.name $GITHUB_ACTOR
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$ACTOR"
+          git config --global user.email "$ACTOR@users.noreply.github.com"
           git add dist/*
           git commit -m "compile ubuntu exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
@@ -63,9 +65,11 @@ jobs:
           ./dist/example_macos_11
 
       - name: Push Built Exe
+        env:
+          ACTOR: $GITHUB_ACTOR
         run: |
-          git config --global user.name $GITHUB_ACTOR
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$ACTOR"
+          git config --global user.email "$ACTOR@users.noreply.github.com"
           git add dist/*
           git commit -m "compile macos exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
@@ -89,9 +93,14 @@ jobs:
           ./dist/example_windows_server_2022
 
       - name: Push Built Exe
+        env:
+          ACTOR: $GITHUB_ACTOR
         run: |
-          git config --global user.name $GITHUB_ACTOR
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          echo $ACTOR
+          echo '$ACTOR'
+          echo "$ACTOR"
+          git config --global user.name "$ACTOR"
+          git config --global user.email "$ACTOR@users.noreply.github.com"
           git add dist/*
           git commit -m "compile windows exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
