@@ -96,9 +96,11 @@ jobs:
         env:
           ACTOR: $GITHUB_ACTOR
         run: |
-          echo $ACTOR
-          echo '$ACTOR'
-          echo "$ACTOR"
+          echo $GITHUB_ACTOR
+          echo '1 $GITHUB_ACTOR'
+          echo "2 $GITHUB_ACTOR"
+          echo '3 ${GITHUB_ACTOR}'
+          echo "4 ${GITHUB_ACTOR}"
           git config --global user.name "$ACTOR"
           git config --global user.email "$ACTOR@users.noreply.github.com"
           git add dist/*
