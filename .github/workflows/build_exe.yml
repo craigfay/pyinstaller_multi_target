@@ -41,7 +41,7 @@ jobs:
           git commit -m "compile ubuntu exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
           git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
-          git push
+          # git push
 
 
   build_macos:
@@ -74,7 +74,7 @@ jobs:
           git commit -m "compile macos exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
           git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
-          git push
+          # git push
 
   build_windows:
     runs-on: windows-2022
@@ -102,5 +102,5 @@ jobs:
           git commit -m "compile windows exe in pipeline"
           git fetch origin $GITHUB_REF_NAME
           git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
-          git push
+          # git push
 
