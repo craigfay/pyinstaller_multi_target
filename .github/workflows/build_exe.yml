@@ -53,7 +53,6 @@ jobs:
               /home/runner/.pyenv/
 
       - name: Install
-        #if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           brew install pyenv
           export PATH="$HOME/.pyenv/bin:$PATH"
