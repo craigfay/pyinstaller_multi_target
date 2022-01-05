@@ -50,19 +50,19 @@ jobs:
             path: |
               /home/runner/.pyenv/
 
-      - name: Install
-        run: |
-          brew install pyenv
-          export PATH="$HOME/.pyenv/bin:$PATH"
-          eval "$(pyenv init -)"
-          eval "$(pyenv virtualenv-init -)"
-          eval "$(pyenv init --path)"
-          env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
-          pip install pyinstaller
-          echo $(which python)
-          echo $(which pip)
-          echo $(which pyenv)
-          echo $(which pyinstaller)
+        - name: Install
+          run: |
+            brew install pyenv
+            export PATH="$HOME/.pyenv/bin:$PATH"
+            eval "$(pyenv init -)"
+            eval "$(pyenv virtualenv-init -)"
+            eval "$(pyenv init --path)"
+            env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+            pip install pyinstaller
+            echo $(which python)
+            echo $(which pip)
+            echo $(which pyenv)
+            echo $(which pyinstaller)
 
       - name: Build
         run: pyinstaller --name example_macos_11 -F example.py
