@@ -25,6 +25,10 @@ jobs:
           eval "$(pyenv init --path)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
           pip install pyinstaller
+          echo $(which python)
+          echo $(which pip)
+          echo $(which pyenv)
+          echo $(which pyinstaller)
           pyinstaller --name example_ubuntu_18_04 -F example.py
           ls
           ./dist/example_ubuntu_18_04
@@ -54,6 +58,10 @@ jobs:
           eval "$(pyenv init --path)"
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
           pip install pyinstaller
+          echo $(which python)
+          echo $(which pip)
+          echo $(which pyenv)
+          echo $(which pyinstaller)
           pyinstaller --name example_macos_11 -F example.py
           ls
           ./dist/example_macos_11
@@ -78,6 +86,10 @@ jobs:
           choco install pyenv-win
           env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
           pip install pyinstaller
+          echo $(Get-Command python)
+          echo $(Get-Command pip)
+          echo $(Get-Command pyenv-win)
+          echo $(Get-Command pyinstaller)
           pyinstaller --name example_windows_server_2022 -F example.py
           ls
           ./dist/example_windows_server_2022
