@@ -47,6 +47,8 @@ jobs:
         with:
           path: |
             /home/runner/.pyenv/
+        key: ${{ runner.os }}-${{ hashFiles('/home') }}
+
       - name: Install
         run: |
           brew install pyenv
