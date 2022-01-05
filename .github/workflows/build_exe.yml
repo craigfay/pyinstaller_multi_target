@@ -1,17 +1,11 @@
-
-
 name: Build Executables
-
-on:
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+'on':
+  workflow_dispatch: null
 jobs:
   build_ubuntu:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-
       - name: Install and Build
         run: |
           curl https://pyenv.run | bash
@@ -26,62 +20,69 @@ jobs:
           echo $(which pyenv)
           echo $(which pyinstaller)
           pyinstaller --name example_ubuntu_18_04 -F example.py
-
       - name: Push Built Exe
-        run: |
+        run: >
           git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+          git config --global user.email "${{ github.actor
+          }}@users.noreply.github.com"
+
           git add dist/*
+
           git commit -m "compile ubuntu exe in pipeline"
+
           git fetch origin $GITHUB_REF_NAME
-          git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
+
+          git merge -s recursive -X theirs -m "merge exe builds"
+          origin/$GITHUB_REF_NAME
+
           # git push
-
-
   build_macos:
     runs-on: macos-11
     steps:
-        - uses: actions/checkout@v2
-
-        - name: Cache Dependencies
-          id: cache-dependencies
-          uses: actions/cache@v2
-          with:
-            path: |
-              /home/runner/.pyenv/
-
-        - name: Install
-          run: |
-            brew install pyenv
-            export PATH="$HOME/.pyenv/bin:$PATH"
-            eval "$(pyenv init -)"
-            eval "$(pyenv virtualenv-init -)"
-            eval "$(pyenv init --path)"
-            env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
-            pip install pyinstaller
-            echo $(which python)
-            echo $(which pip)
-            echo $(which pyenv)
-            echo $(which pyinstaller)
-
+      - uses: actions/checkout@v2
+      - name: Cache Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            /home/runner/.pyenv/
+      - name: Install
+        run: |
+          brew install pyenv
+          export PATH="$HOME/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+          eval "$(pyenv init --path)"
+          env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install
+          pip install pyinstaller
+          echo $(which python)
+          echo $(which pip)
+          echo $(which pyenv)
+          echo $(which pyinstaller)
       - name: Build
         run: pyinstaller --name example_macos_11 -F example.py
-
       - name: Push Built Exe
-        run: |
+        run: >
           git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git add dist/*
-          git commit -m "compile macos exe in pipeline"
-          git fetch origin $GITHUB_REF_NAME
-          git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
-          # git push
 
+          git config --global user.email "${{ github.actor
+          }}@users.noreply.github.com"
+
+          git add dist/*
+
+          git commit -m "compile macos exe in pipeline"
+
+          git fetch origin $GITHUB_REF_NAME
+
+          git merge -s recursive -X theirs -m "merge exe builds"
+          origin/$GITHUB_REF_NAME
+
+          # git push
   build_windows:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v2
-
       - name: Install and Build
         run: |
           choco install pyenv-win
@@ -94,14 +95,21 @@ jobs:
           pyinstaller --name example_windows_server_2022 -F example.py
           ls
           ./dist/example_windows_server_2022
-
       - name: Push Built Exe
-        run: |
+        run: >
           git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+          git config --global user.email "${{ github.actor
+          }}@users.noreply.github.com"
+
           git add dist/*
+
           git commit -m "compile windows exe in pipeline"
+
           git fetch origin $GITHUB_REF_NAME
-          git merge -s recursive -X theirs -m "merge exe builds" origin/$GITHUB_REF_NAME
+
+          git merge -s recursive -X theirs -m "merge exe builds"
+          origin/$GITHUB_REF_NAME
+
           # git push
 
