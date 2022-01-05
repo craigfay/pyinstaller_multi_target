@@ -49,7 +49,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install and Build
+        - name: Cache Dependencies
+          id: cache-dependencies
+          uses: actions/cache@v2
+          with:
+            path: |
+              /home/runner/.pyenv/
+
+      - name: Install
+        #if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           brew install pyenv
           export PATH="$HOME/.pyenv/bin:$PATH"
@@ -62,9 +70,9 @@ jobs:
           echo $(which pip)
           echo $(which pyenv)
           echo $(which pyinstaller)
-          pyinstaller --name example_macos_11 -F example.py
-          ls
-          ./dist/example_macos_11
+
+      - name: Build
+        run: pyinstaller --name example_macos_11 -F example.py
 
       - name: Push Built Exe
         run: |
@@ -88,7 +96,7 @@ jobs:
           pip install pyinstaller
           echo $(Get-Command python)
           echo $(Get-Command pip)
-          echo $(Get-Command pyenv-win)
+          echo $(Get-Command pyenv)
           echo $(Get-Command pyinstaller)
           pyinstaller --name example_windows_server_2022 -F example.py
           ls
